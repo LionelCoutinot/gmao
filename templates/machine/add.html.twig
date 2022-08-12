@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une nouvelle machine{% endblock %}
+{% block body %}
+   <div class="container">
+        <div class="row">
+            <div class="col-12 my-5 col-md-6 offset-md-3 border border-2 border-warning  px-5 text-primary rounded background-bold">
+                <div class="text-center">
+                    <h1 class="uppercaseb brown py-3 my-5">Ajouter une nouvelle machine !</h1>
+			        {% for message in app.flashes('notice') %}
+                        <div class="flash-notice text-success mb-4">
+                            <strong> {{ message }}</strong>
+                         </div>                    
+                    {% endfor %}
+                </div>
+                {% form_theme form 'bootstrap_5_layout.html.twig' %}    
+                {{ form_start(form) }} 
+			        <div class="brown mb-4"><strong> {{ form_row(form.nom) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.type) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.miseservice) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.caracteristique) }}</strong></div>
+                    <div class="my-4"> {{ form_row(form.submit, { 'label': 'Enregistrer Machine', 'attr': {'class':'bg-success text-white'} } ) }}</div>
+                {{ form_end(form) }} 
+			    <div class="text-center my-5"> <a href="{{ path('machine') }}"><button type="button" class="btn btn-primary text-white">Retour Parc machines</button></a></div>
+		    </div>
+        </div>     
+    </div>
+{% endblock %}

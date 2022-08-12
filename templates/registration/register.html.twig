@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrement{% endblock %}
+{% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">        
+            <div class="col-12 col-md-6 offset-md-3 my-5 border border-2 border-warning  px-5 palegoldenrod">
+                <div class="my-4 text-center">
+                    {% for message in app.flashes('notice') %}
+                        <div class="flash-notice mb-5 text-success">
+                            <strong>{{ message }}</strong>
+                    {% endfor %}
+                </div>
+                <div class="mt-5 brown">
+                    <h1 class="text-center brown uppercase py-3 mb-5">Enregistrement</h1>
+                    {{ form_start(registrationForm) }}
+                       <strong> {{ form_row(registrationForm.nom) }}</strong>
+                      <strong>  {{ form_row(registrationForm.email) }}</strong>
+                     <strong>   {{ form_row(registrationForm.plainPassword, { label: 'Password'  }) }}</strong>
+                     <strong>   {{ form_row(registrationForm.agreeTerms) }}</strong>
+                        <button type="submit" class="btn btn-primary form-control mb-5"">Register</button>
+                    {{ form_end(registrationForm) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

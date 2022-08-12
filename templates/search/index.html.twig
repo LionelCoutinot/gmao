@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les pannes {% endblock %}
+{% block body %}
+   <div class="text-end  me-2 mt-2">
+        <input type="button" class="btn btn-warning" value="Imprimer" onclick="window.print();" />
+   </div>
+   <div class="container-fluid fsize">   
+        <div class="row">
+            <div class="col-md-3 mt-5 fsize me-5">
+                 {%  include 'search/_filter.html.twig' with { form:form } only %} 
+            </div>
+            <div class="col-md-8 my-5 border border-warning  rounded background-bold me-5">
+                <h1 class="text-center brown uppercaseb py-3  my-5">Listage des interventions</h1>
+                {% if pannes is empty %}
+                    <span class="text-center">Aucune intervention !</span>
+                {%  else %} 
+                    <table class="table table-bordered border border-dark border border-2 mb-5 me-5">
+	                    <thead>
+	                        <tr>
+							    <td class="border border-dark border border-2 pb-3 px=2"><b>Machine</b></td> 
+		                        <td class="border border-dark border border-2 pb-3 px=2"><b>Arret</b></td>	           
+	                            <td class= "border border-dark border border-2 pb-3 px=2"><b>Date et heure de l'arrêt</b></td>	
+                                <td class= "border border-dark border border-2 pb-3 px=2"><b>Date et heure de la reprise</b></td>
+                                <td class= "border border-dark border border-2 pb-3 px=2"><b>Criticité</b></td> 
+                                <td class= "border border-dark border border-2 pb-3 px=2"> <b>Demandeur</b></td> 
+	                            <td class= "border border-dark border border-2 pb-3 px=2"><b>Intervenant</b></td>
+	                            <td class= "border border-dark border border-2 pb-3 px=2"><b>Type de maintenance</b></td>
+	                            <td class= "border border-dark border border-2 pb-3 px=2"><b>Type de Panne</b></td> 	                
+	                            <td class= "border border-dark border border-2 mb-3 px=2"><b>Durée de l'intervention</b></td> 	                 
+	                            <td class= "border border-dark border border-2 mb-3 px=2"><b>Tâches effectuées</b></td>
+	                        </tr>
+	                    </thead>
+                        <tbody> 
+                            {%  for panne in pannes %} 
+                                {%  include 'search/_card.html.twig' with { panne:panne } only %} 
+                            {%  endfor %} 
+                        </tbody>
+                    </table>
+                {%  endif %}       
+                <div class="text-center mb-5"> <a href="{{path('machine') }}"><button type="button" class="btn btn-primary text-white">Parc Machines</button></a></div>
+            </div>
+        </div>
+    </div>
+  
+{% endblock %}

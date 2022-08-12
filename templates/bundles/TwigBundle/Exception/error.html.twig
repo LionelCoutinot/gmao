@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{# app/Resources/views/form_theme.html.twig #}
+{% block title %}Erreur {{status_code}} |  Erreur{% endblock %}
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 my-5 px-5 border border-2 border-warning rounded px-5 text-primary palegoldenrod">
+				<h1 class="text-center text-primary uppercase py-3  my-5">Erreur {{status_code}} | Une erreur vient de survenir !</h2>
+			 	<div class="text-white">
+					 <h5 class="mb-3">Une erreur vient de survenir  !</h5>
+					<div class="mb-3">Le code d'erreur est : <strong>{{status_code}}</strong></div> 				
+					<div>Le texte d'erreur  est : <strong>{{status_text}}</strong></div>
+                </div>				
+				<div class="my-5 text-center"><img src="{{ asset('assets/Defaut/smileysad.jpg') }}"></div>
+	        	<div class="text-white">
+                    <p> Détails :
+					 <ul>
+						<li>{{  exception.message }}</li>
+						</p>
+					</ul>					
+                </div>
+			</div>
+	    </div>
+	</div>  
+{% endblock %}

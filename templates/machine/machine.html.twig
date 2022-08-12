@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GMAO{% endblock %}
+{% block body %}
+    <div class="text-end me-2 mt-2">
+      <input type="button" class="btn btn-warning" value="Imprimer" onclick="window.print();" />
+   </div>
+    <div class="container border border-warning rounded background-bold mb-5">
+        <div class="row">
+	        <div class="col-12   text-center my-1">
+                <h1 class="text-center brown uppercaseb py-3">Parc des Machines</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for machine in machines %}                                                               
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="card-body border border-warning rounded ">
+				        <h4 class="card-title text-center text-danger">{{ machine.nom }}</h4>				            
+                        <div class=" mb-3">
+                            <b>Mise en service le</b> : {{ machine.miseservice|date("d/m/Y" ) }}
+                        </div>
+                        <div class="mb-3">
+                            <b>Type</b> :  {{ machine.type }} 
+                        </div>
+                        <div class="text-justify mb-3">                                   
+                            <b>Description</b> : {{ machine.caracteristique |raw }}
+                        </div>                            
+                        <div class="text-center">
+                            <a href="{{ path('panne', { id: machine.id }) }}"><button type="button" class="btn btn-primary text-white">Maintenance</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} 
+        </div>
+    </div> 
+{% endblock %}

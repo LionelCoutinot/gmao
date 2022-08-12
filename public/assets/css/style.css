@@ -1,0 +1,106 @@
+body
+{
+    font-family:  Verdana, Arial, Helvetica, sans-serif;
+    background-color:#FFFFAA;
+}
+
+.fsize{
+   font-size:12px;
+}
+
+.fsizeb{
+    font-size:10px;
+ }
+
+.bold{
+    font-weight: bold;   
+}
+
+.white{
+    color:white;
+}
+
+.brown{
+    color:brown;
+}
+
+
+
+.back-nav {
+    background-color:#FFFFAA;    
+}
+
+#titlenav
+{
+    font-size:40px;
+    font-weight:bold;
+    color:brown;
+}
+
+.uppercase
+{
+    text-transform:uppercase;
+    font-weight:bold;
+    background-color:#FFFFAA;     
+    border: 2px solid brown;
+    border-radius:10px; 
+}
+
+.uppercaseb{
+    text-transform:uppercase;
+    font-weight:bold;
+}
+
+.background-bold
+{
+    background-color:#FFFFAA;  
+}
+
+
+a 
+{
+    text-decoration: none;
+}
+
+.card-header {
+    background-color:#FFFFAA; 
+}
+
+.color37{
+    background-color: #FFFFAA;
+}
+
+.brown2{
+    color:brown;
+    font-weight:bold;
+}
+
+.align-bo{
+    vertical-align:bottom;
+}
+
+
+.card-body{
+    background-color: #FFFFAA;
+}
+
+
+.number
+{
+    font-size:30px;
+    font-weight:bold;
+    color:green;
+    padding-right:10px;
+    padding-left:10px;
+    
+}
+
+.justify{
+    text-align:justify;
+}
+
+.filter{
+    display:block;
+    position:sticky;
+    top:50px;
+}

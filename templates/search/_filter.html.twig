@@ -1,0 +1,14 @@
+<h3 class="uppercaseb text-center mb-3">Filtres</h3>
+<h4>Recherche</h4>
+{{ form_start(form, {attr: {class:'filter'}}) }}
+
+{{ form_row(form.mac) }}
+{{ form_row(form.ti) }}
+{{ form_row(form.tp) }}
+
+<h4>Réglage des dates</h4>
+{{ form_row(form.min) }}
+{{ form_row(form.max) }}
+
+<button class="btn btn-primary w-100 mb-5">Filtrer</button>                   
+{{ form_end(form) }}

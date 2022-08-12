@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une nouvelle intervention{% endblock %}
+{% block body %}
+   <div class="container">
+        <div class="row">
+            <div class="col-12 my-5 col-md-6 offset-md-3 border border-2 border-warning  px-5 rounded background-bold brown">
+                <div class="text-center">
+                    <h1 class="uppercaseb py-3 my-5">Ajouter une nouvelle intervention !</h1>
+			        {% for message in app.flashes('notice') %}
+                        <div class="flash-notice text-success mb-4">
+                            <strong> {{ message }}</strong>
+                         </div>                    
+                    {% endfor %}
+                </div>
+                {% form_theme form 'bootstrap_5_layout.html.twig' %}    
+                {{ form_start(form) }} 
+			        <div class="brown mb-4"><strong> {{ form_row(form.machine) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.criticite) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.arret) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.debutarret) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.finarret) }}</strong></div>                    
+                    <div class="brown mb-4"><strong> {{ form_row(form.demandeur ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.intervenant ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.typeintervention ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.typepanne ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.dureeintervention ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.travaux ) }}</strong></div>                  
+                    <div class="my-4"> {{ form_row(form.submit, { 'label': 'Enregistrer Intervention', 'attr': {'class':'bg-success text-white'} } ) }}</div>
+                {{ form_end(form) }} 
+			    <div class="text-center my-5"> <a href="{{ path('machine') }}"><button type="button" class="btn btn-primary text-white">Retour Parc machines</button></a></div>
+		    </div>
+        </div>     
+    </div>
+{% endblock %}
