@@ -1,20 +1,20 @@
  
 								      <tr class="border border-dark border border-2"> 
-                                 <td class="border border-dark border border-2"> <span class= "brown"><strong> {{ panne.machine.nom }}</strong></span></td>
+                                 <td class="col-md-1 border border-dark border border-2"> <span class= "brown"><strong> {{ panne.machine.nom }}</strong></span></td>
                                  {% if panne.arret.arret == 'Non' %}
-									         <td class="border border-dark border border-2" colspan="3"><div class= "text-center">  <strong><span class= "brown"> Non</span><strong></td>
+									         <td class="col-md-3 border border-dark border border-2" colspan="3"><div class= "text-center">  <strong><span class= "brown"> Non</span><strong></td>
                                 {%  else %}
-                                    <td class="border border-dark border border-2"> <strong>   <span class= "brown"> {{ panne.arret }}</span><strong></td>
-                                    <td class="border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.debutarret |date("d/m/Y H:i" ) }}</span><strong></td>
-                                    <td class="border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.finarret |date("d/m/Y H:i") }}</span><strong></td>
+                                    <td class="col-md-1 border border-dark border border-2"> <strong>   <span class= "brown"> {{ panne.arret }}</span><strong></td>
+                                    <td class="col-md-1 border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.debutarret |date("d/m/Y H:i" ) }}</span><strong></td>
+                                    <td class="col-md-1 border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.finarret |date("d/m/Y H:i") }}</span><strong></td>
                                  {%  endif %} 
-                                    <td class="border border-dark border border-2"><strong><span class= "brown"> {{ panne.criticite }}</span><strong></td>
-                                    <td class="border border-dark border border-2"><strong><span class= "brown"> {{ panne.demandeur }}</span><strong></td>
-                                    <td class="border border-dark border border-2"><strong> <span class ="brown"> {{ panne.intervenant  }} </span> </strong></td> 
-                                    <td class="border border-dark border border-2"> <strong> <span class= "brown"> {{ panne.typeintervention }}</span><strong></td> 
-                                    <td class="border border-dark border border-2"><strong> <span class= "brown"> {{ panne.typepanne }}</span><strong></td>
-                                    <td class="border border-dark border border-2"> <strong>  <span class= "brown"> {{ panne.dureeintervention | date('H : i') }} heure(s)</span> </strong></td>
-                                    <td class="border border-dark border border-2"> <strong> <span class ="brown"> {{ panne.travaux |raw}}</span></strong></td>
+                                    <td class="col-md-1 border border-dark border border-2"><strong><span class= "brown"> {{ panne.criticite }}</span><strong></td>
+                                    <td class="col-md-1 border border-dark border border-2"><strong><span class= "brown"> {{ panne.demandeur }}</span><strong></td>
+                                    <td class="col-md-1 border border-dark border border-2"><strong> <span class ="brown"> {{ panne.intervenant  }} </span> </strong></td> 
+                                    <td class="col-md-1 border border-dark border border-2"> <strong> <span class= "brown"> {{ panne.typeintervention }}</span><strong></td> 
+                                    <td class="col-md-1 border border-dark border border-2"><strong> <span class= "brown"> {{ panne.typepanne }}</span><strong></td>
+                                    <td class="col-md-1 border border-dark border border-2"> <strong>  <span class= "brown"> {{ panne.dureeintervention | date('H : i') }} heure(s)</span> </strong></td>
+                                    <td class="col-md-2 border border-dark border border-2"> <strong> <span class ="brown"> {{ panne.travaux |raw}}</span></strong></td>
                               </tr>
                            
                         

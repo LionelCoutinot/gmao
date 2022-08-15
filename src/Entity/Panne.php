@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PanneRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,7 +39,9 @@ class Panne
     private $debutarret;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)    
+     *  @Assert\GreaterThan(propertyPath="debutarret",
+     *   message="La date de fin doit être égale ou plus récente que la date de début !")
      */
     private $finarret;
 
@@ -303,5 +306,6 @@ class Panne
         public function __toString(): string{
             return '';
         }
+       
 	
 }

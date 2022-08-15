@@ -15,17 +15,17 @@
                 </div>
                 {% form_theme form 'bootstrap_5_layout.html.twig' %}    
                 {{ form_start(form) }} 
-			        <div class="brown mb-4"><strong> {{ form_row(form.machine) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.criticite) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.arret) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.debutarret) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.finarret) }}</strong></div>                    
-                    <div class="brown mb-4"><strong> {{ form_row(form.demandeur ) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.intervenant ) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.typeintervention ) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.typepanne ) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.dureeintervention ) }}</strong></div>
-                    <div class="brown mb-4"><strong> {{ form_row(form.travaux ) }}</strong></div>                  
+			        <div class="brown mb-4"><strong> {{ form_row(form.machine, { 'label': 'Nom Machine' })  }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.criticite, { 'label': 'Criticité' }) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.arret, { 'label': 'Arrêt' }) }}</strong></div>                  
+                    <div class="brown mb-4"><strong> {{ form_row(form.debutarret,  {'label': 'Date et heure de l\'Arrêt' })}}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.finarret,   {'label': 'Date et heure de la reprise' }) }}</strong></div>                    
+                    <div class="brown mb-4"><strong> {{ form_row(form.demandeur, { 'label': 'Nom ou fonction du demandeur' } ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.intervenant, { 'label': 'Nom ou fonction de l\'intervenant' } ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.typeintervention, { 'label': 'Type d\'intervention' } ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.typepanne, { 'label': 'Type de panne' } ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.dureeintervention, { 'label': 'Durée de l\'intervention' } ) }}</strong></div>
+                    <div class="brown mb-4"><strong> {{ form_row(form.travaux, { 'label': 'Travaux effectués' } ) }}</strong></div>                  
                     <div class="my-4"> {{ form_row(form.submit, { 'label': 'Enregistrer Intervention', 'attr': {'class':'bg-success text-white'} } ) }}</div>
                 {{ form_end(form) }} 
 			    <div class="text-center my-5"> <a href="{{ path('machine') }}"><button type="button" class="btn btn-primary text-white">Retour Parc machines</button></a></div>

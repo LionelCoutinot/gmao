@@ -27,8 +27,14 @@ class PanneType extends AbstractType
         ->add('machine')
         ->add('criticite')
         ->add('arret')
-        ->add('debutarret', DateTimeType::class)
-        ->add('finarret',DateTimeType::class)
+        ->add('debutarret', DateTimeType::class,
+        array('years' => range(1000,2100), 
+        'date_format'=> 'dd MM yyyy')
+         )
+        ->add('finarret',DateTimeType::class, 
+        array('years' => range(1000,2100), 
+        'date_format'=> 'dd MM yyyy')
+         )
         ->add('demandeur')
         ->add('intervenant')
         ->add('typeintervention')

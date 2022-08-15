@@ -42,11 +42,15 @@ class SearchForm extends AbstractType
             ])
             ->add('min',  DateTimeType::class, [
                 'label' => 'Date min',
-                'required' => false,             
+                'required' => false,
+                'years' => range(1960,2100), 
+                'date_format'=> 'dd MM yyyy'       
             ])
             ->add('max',  DateTimeType::class, [
                 'label' => 'Date max',
                 'required' => false,
+                'years' => range(1960,2100), 
+                'date_format'=> 'dd MM yyyy'
             ])
         ;
     }

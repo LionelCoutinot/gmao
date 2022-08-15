@@ -45,10 +45,10 @@ class PanneController extends AbstractController
 		$form->handleRequest($request);
 		if ($form->isSubmitted() && $form->isValid()) {
 		    /* dump($request);*/
-            $newPanne = $form->getData();
+            $newPanne = $form->getData();           
 			$em=$doctrine->getManager();
 			$em->persist($newPanne);
-			$em->flush();
+			$em->flush();            
             $this->addFlash(
                 'notice',
                 'Nouvelle intervention ajoutée à la liste !'
@@ -78,6 +78,7 @@ class PanneController extends AbstractController
            'pannes'=>$panne,
         ]);
    }
+  
 }
 
 

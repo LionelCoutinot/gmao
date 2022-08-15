@@ -1,56 +1,63 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}Listage des interventions{% endblock %}
 {% block body %}
    <div class="text-end me-2 mt-2">
       <input type="button" class="btn btn-warning" value="Imprimer" onclick="window.print();" />
    </div>
    <div class="container">   
       <div class="row">
-         <div class="col-12 my-5 border border-warning   rounded background-bold px-5">
+         <div class="col-12 my-5 border border-warning   rounded background-bold fsize  px-5">
             <h1 class="text-center brown uppercaseb py-3  my-5">Listage des interventions</h1>
-                  {% if pannes is empty %}
-                     <span>Aucune intervention sur cette machine</span>
-                  {%  else %} 
-                     <table class="table table-bordered border border-dark border border-2 mb-5">
-	                     <thead>
-	                        <tr>
-								<td class="border border-dark border border-2 pb-3 px=2"><b>Machine</b></td> 
-		                       <td class="border border-dark border border-2 pb-3 px=2"><b>Arret</b></td>	           
-	                           <td class= "border border-dark border border-2 pb-3 px=2"><b>Date et heure de l'arrêt</b></td>	
-                              <td class= "border border-dark border border-2 pb-3 px=2"><b>Date et heure de la reprise</b></td>
-                              <td class= "border border-dark border border-2 pb-3 px=2"><b>Criticité</b></td> 
-                              <td class= "border border-dark border border-2 pb-3 px=2"><b>Demandeur</b></td> 
-	                           <td class= "border border-dark border border-2 pb-3 px=2"><b>Intervenant</b></td>
-	                           <td class= "border border-dark border border-2 pb-3 px=2"><b>Type de maintenance</b></td>
-	                           <td class= "border border-dark border border-2 pb-3 px=2"><b>Type de Panne</b></td> 	                
-	                           <td class= "border border-dark border border-2 mb-3 px=2"><b>Durée de l'intervention</b></td> 	                 
-	                           <td class= "border border-dark border border-2 mb-3 px=2"><b>Tâches effectuées</b></td>
-	                        </tr>
-	                     </thead>
-                        <tbody> 
-                           {%  for panne in pannes %} 
-								<tr class="border border-dark border border-2"> 
-                                 <td class="border border-dark border border-2"><span class= "brown"><strong> {{ panne.machine.nom }}</strong></span></td>
-                                 {% if panne.arret.arret == 'Non' %}
-									         <td class="border border-dark border border-2" colspan="3"><div class= "text-center">  <strong><span class= "brown"> Non</span><strong></td>
-                                {%  else %}
-                                    <td class="border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.arret }}</span><strong></td>
-                                    <td class="border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.debutarret |date("d/m/Y H:i" ) }}</span><strong></td>
-                                    <td class="border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.finarret |date("d/m/Y H:i") }}</span><strong></td>
-                                 {%  endif %} 
-                                    <td class="border border-dark border border-2"><strong><span class= "brown"> {{ panne.criticite }}</span><strong></td>
-                                    <td class="border border-dark border border-2"><strong><span class= "brown"> {{ panne.demandeur }}</span><strong></td>
-                                    <td class="border border-dark border border-2"><strong> <span class ="brown"> {{ panne.intervenant  }} </span> </strong></td> 
-                                    <td class="border border-dark border border-2"> <strong> <span class= "brown"> {{ panne.typeintervention }}</span><strong></td> 
-                                    <td class="border border-dark border border-2"><strong> <span class= "brown"> {{ panne.typepanne }}</span><strong></td>
-                                    <td class="border border-dark border border-2"> <strong>  <span class= "brown"> {{ panne.dureeintervention | date('H : i') }} heure(s)</span> </strong></td>
-                                    <td class="border border-dark border border-2"> <strong> <span class ="brown"> {{ panne.travaux |raw}}</span></strong></td>
-                              </tr>
-                           {%  endfor %} 
-                        </tbody>
-                     </table>
-                  {%  endif %}       
-                  <div class="text-center mb-5"> <a href="{{path('machine') }}"><button type="button" class="btn btn-primary text-white">Parc Machines</button></a></div>
+            {% if pannes is empty %}
+               <span>Aucune intervention sur cette machine</span>
+            {%  else %} 
+               <div class="table-responsive">
+                  <table class="table table-bordered border border-dark border border-2 mb-5">
+	                  <thead>
+	                     <tr>
+								   <td class="col-md-1 border border-dark border border-2 pb-3 px=2"><b>Machine</b></td> 
+		                     <td class="col-md-1 border border-dark border border-2 pb-3 px=2"><b>Arret</b></td>	           
+	                        <td class= "col-md-1 border border-dark border border-2 pb-3 px=2"><b>Date et heure de l'arrêt</b></td>	
+                           <td class= "col-md-1 border border-dark border border-2 pb-3 px=2"><b>Date et heure de la reprise</b></td>
+                           <td class= "col-md-1 border border-dark border border-2 pb-3 px=2"><b>Criticité</b></td> 
+                           <td class= "col-md-1 border border-dark border border-2 pb-3 px=2"><b>Demandeur</b></td> 
+	                        <td class= "col-md-1 border border-dark border border-2 pb-3 px=2"><b>Intervenant</b></td>
+	                        <td class= "col-md-1 border border-dark border border-2 pb-3 px=2"><b>Type de maintenance</b></td>
+	                        <td class= "col-md-1 border border-dark border border-2 pb-3 px=2"><b>Type de Panne</b></td> 	                
+	                        <td class= "col-md-1 border border-dark border border-2 mb-3 px=2"><b>Durée de l'intervention</b></td> 	                 
+	                        <td class= "col-md-2 border border-dark border border-2 mb-3 px=2"><b>Tâches effectuées</b></td>
+	                     </tr>
+	                  </thead>
+                     <tbody> 
+                        {%  for panne in pannes %} 
+								   <tr class="border border-dark border border-2"> 
+                              <td class="col-md-1 border border-dark border border-2"><span class= "brown"><strong> {{ panne.machine.nom }}</strong></span></td>
+                              {% if panne.arret.arret == 'Non' %}
+									      <td class="col-md-3 border border-dark border border-2" colspan="3"><div class= "text-center">  <strong><span class= "brown"> Non</span><strong></td>
+                              {%  else %}
+                                 <td class="col-md-1 border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.arret }}</span><strong></td>
+                                 <td class="col-md-1 border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.debutarret |date("d/m/Y H:i" ) }}</span><strong></td>
+                                 <td class="col-md-1 border border-dark border border-2"><strong>   <span class= "brown"> {{ panne.finarret |date("d/m/Y H:i") }}</span><strong></td>
+                              {%  endif %} 
+                              <td class="col-md-1 border border-dark border border-2"><strong><span class= "brown"> {{ panne.criticite }}</span><strong></td>
+                              <td class="col-md-1 border border-dark border border-2"><strong><span class= "brown"> {{ panne.demandeur }}</span><strong></td>
+                              <td class="col-md-1 border border-dark border border-2"><strong> <span class ="brown"> {{ panne.intervenant  }} </span> </strong></td> 
+                              <td class="col-md-1 border border-dark border border-2"> <strong> <span class= "brown"> {{ panne.typeintervention }}</span><strong></td> 
+                              <td class="col-md-1 border border-dark border border-2"><strong> <span class= "brown"> {{ panne.typepanne }}</span><strong></td>
+                              <td class="col-md-1 border border-dark border border-2"> <strong>  <span class= "brown"> {{ panne.dureeintervention | date('H : i') }} heure(s)</span> </strong></td>
+                              <td class="col-md-2 border border-dark border border-2"> <strong> <span class ="brown"> {{ panne.travaux |raw}}</span></strong></td>
+                           </tr>
+                        {%  endfor %} 
+                     </tbody>
+                  </table>
+               </div> 
+            {%  endif %}    
+            <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+               {% for  panne in pannes %}
+                  <rect x="{{ loop.index }}" y="0" width="5" height="{{ panne }}" />
+                {% endfor %}
+</svg> 
+            <div class="text-center mt-3 mb-5"> <a href="{{path('machine') }}"><button type="button" class="btn btn-primary text-white">Parc Machines</button></a></div>
          </div>
       </div>
    </div>

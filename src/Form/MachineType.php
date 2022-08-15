@@ -17,7 +17,8 @@ class MachineType extends AbstractType
         $builder
             ->add('nom')
             ->add('type')
-            ->add('miseservice', DateType::class)
+            ->add('miseservice', DateType::class, 
+            array('years' => range(1960,2100) ))
             ->add('caracteristique')
             ->add('submit', SubmitType::class)
         ;
