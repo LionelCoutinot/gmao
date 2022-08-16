@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : Dim 14 août 2022 à 20:54
--- Version du serveur :  10.5.16-MariaDB
+-- Généré le : mar. 16 août 2022 à 11:59
+-- Version du serveur :  10.5.17-MariaDB
 -- Version de PHP : 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -161,7 +161,8 @@ INSERT INTO `panne` (`id`, `machine_id`, `criticite_id`, `arret_id`, `typeinterv
 (7, 1, 3, 1, 2, 2, '2021-05-10 11:00:00', '2021-05-12 16:15:00', 'Chef maintenance', 'Intervenant1', '06:00:00', 'Démontage du moteur pour révision. Puis remontage.'),
 (8, 3, 1, 1, 1, 1, '2021-06-10 09:10:00', '2021-06-10 16:30:00', 'Chef atelier', 'Intervenant2', '04:30:00', 'Problème avec le système de chauffage de l\'étain. Changement d\'une résistance chauffante.'),
 (10, 2, 2, 1, 3, 9, '2021-07-21 09:00:00', '2021-07-21 11:00:00', 'Chef atelier', 'Intervenant1', '02:00:00', 'Ajout d\'un cache protecteur pour les opérateurs'),
-(12, 1, 3, 1, 3, 9, '2021-07-22 09:00:00', '2017-07-22 11:00:00', 'Chef maintenance', 'Intervenant2', '02:00:00', 'Ajout d\'un cache protecteur pour les opérateurs');
+(12, 1, 3, 1, 3, 9, '2021-07-22 09:00:00', '2017-07-22 11:00:00', 'Chef maintenance', 'Intervenant2', '02:00:00', 'Ajout d\'un cache protecteur pour les opérateurs'),
+(13, 1, 2, 1, 1, 7, '2021-07-29 15:45:00', '2021-07-29 16:15:00', 'Opérateur', 'Intervenant1', '00:30:00', 'Changement d\'un capteur optique');
 
 -- --------------------------------------------------------
 
@@ -180,7 +181,7 @@ CREATE TABLE `typeintervention` (
 
 INSERT INTO `typeintervention` (`id`, `typeintervention`) VALUES
 (1, 'Curative'),
-(2, 'Préventif'),
+(2, 'Préventive'),
 (3, 'Amélioration Continue'),
 (4, 'Annuelle');
 
@@ -207,7 +208,6 @@ INSERT INTO `typepanne` (`id`, `typepanne`) VALUES
 (5, 'Pneumatique'),
 (6, 'Automatisme'),
 (7, 'Électronique'),
-(8, 'Automatisme'),
 (9, 'Sécurité'),
 (10, 'Autre');
 
@@ -333,7 +333,7 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT pour la table `panne`
 --
 ALTER TABLE `panne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `typeintervention`
@@ -351,7 +351,7 @@ ALTER TABLE `typepanne`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées

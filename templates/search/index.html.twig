@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Filtrage des interventions{% endblock %}
 {% block body %}
+
    <div class="text-end  me-2 mt-2">
         <input type="button" class="btn btn-warning" value="Imprimer" onclick="window.print();" />
    </div>
    <div class="container-fluid fsize">   
         <div class="row">
-            <div class="col-md-3 mt-5 fsize me-5">
-                 {%  include 'search/_filter.html.twig' with { form:form } only %} 
+        
+            <div class="col-md-3 mt-5  fsize me-5">
+                 {%  include 'search/_filter.html.twig' with { form:form } only %}
             </div>
+        
             <div class="col-md-8 my-5 border border-warning  rounded background-bold me-5">
                 <h1 class="text-center brown uppercaseb py-3  my-5">Listage des interventions</h1>
                 {% if pannes is empty %}
@@ -38,10 +42,137 @@
                             </tbody>
                         </table>
                     </div>
-                {%  endif %}       
+                {%  endif %}  
+                <hr class="mt-5">
+               <h2 class="text-center my-5 uppercaseb">Statistiques</h2>
+                <div class="fsizec">   
+                    {% set var = 0 %}
+                    {% set ti1 = 0 %}
+                    {% set ti2 = 0 %}
+                    {% set ti3 = 0 %}
+                    {% set ti4 = 0 %}
+                    {% set tip1 = 0 %}
+                    {% set tip2 = 0 %}
+                    {% set tip3 = 0 %}
+                    {% set tip4 = 0 %}
+
+                    {% set tp1 = 0 %}
+                    {% set tp2 = 0 %}
+                    {% set tp3 = 0 %}
+                    {% set tp4 = 0 %}
+                    {% set tp5 = 0 %}
+                    {% set tp6 = 0 %}
+                    {% set tp7 = 0 %}
+                    {% set tp8 = 0 %}
+                    {% set tp9 = 0 %}
+                    {% set tpp1 = 0 %}
+                    {% set tpp2 = 0 %}
+                    {% set tpp3 = 0 %}
+                    {% set tpp4 = 0 %}
+                    {% set tpp5 = 0 %}
+                    {% set tpp6 = 0 %}
+                    {% set tpp7 = 0 %}
+                    {% set tpp8 = 0 %}
+                    {% set tpp9 = 0 %}
+
+                        {% for panne  in pannes  %}
+                            {% set var = var + 1 %}
+                            {% if panne.typeintervention  == "Curative" %}   
+                                  {% set ti1 = ti1 + 1 %}                       
+                            {% endif %}
+                            {% set tip1 = (ti1 * 100)/var %}
+                           
+                            {% if panne.typeintervention  == "Préventive" %}
+                                {% set ti2 = ti2 + 1 %}
+                            {% endif %}
+                             {% set tip2 = (ti2 * 100)/var %}
+
+                            {% if panne.typeintervention  == "Amélioration Continue" %}
+                                {% set ti3 = ti3 + 1 %}
+                            {% endif %}
+                             {% set tip3 = (ti3 * 100)/var %}
+
+                             {% if panne.typeintervention  == "Annuelle" %}
+                                {% set ti4 = ti4 + 1 %}
+                            {% endif %} 
+                             {% set tip4 = (ti4 * 100)/var %}
+
+
+
+                            {% if panne.typepanne  == "Électrique"%}
+                                {% set tp1 = tp1 + 1 %}
+                             {% endif %}
+                            {% set tpp1 = (tp1 * 100)/var %}
+
+                            {% if panne.typepanne  == "Électromécanique" %}
+                                {% set tp2 = tp2 + 1 %}
+                            {% endif %}
+                            {% set tpp2 = (tp2 * 100)/var %}
+
+                            {% if panne.typepanne  == "Mécanique" %}
+                                {% set tp3 = tp3 + 1 %}
+                            {% endif %}
+                            {% set tpp3 = (tp3 * 100)/var %}
+
+                            {% if panne.typepanne  == "Hydraulique" %}
+                                {% set tp4 = tp4 + 1 %}
+                            {% endif %}
+                            {% set tpp4 = (tp4 * 100)/var %}
+
+                            {% if panne.typepanne  == "Pneumatique" %}
+                                {% set tp5 = tp5 + 1 %}
+                            {% endif %}
+                            {% set tpp5 = (tp5 * 100)/var %}
+
+                            {% if panne.typepanne  == "Automatisme" %}
+                                {% set tp6 = tp6 + 1 %}
+                            {% endif %}
+                            {% set tpp6 = (tp6 * 100)/var %}
+
+                            {% if panne.typepanne  == "Électronique" %}
+                                {% set tp7 = tp7 + 1 %}
+                            {% endif %}
+                            {% set tpp7 = (tp7 * 100)/var %}
+                            
+                            {% if panne.typepanne  == "Sécurité" %}
+                                {% set tp8 = tp8 + 1 %}
+                            {% endif %}
+                            {% set tpp8 = (tp8 * 100)/var %}
+
+                            {% if panne.typepanne  == "Autre" %}
+                                {% set tp9 = tp9 + 1 %}
+                            {% endif %}
+                            {% set tpp9 = (tp9 * 100)/var %}
+                          
+
+                            
+                        {% endfor %}
+                    <h4>Les interventions :</h4>
+                    <ul>
+                        <li>Nombre d'interventions = {{ var }}</li>
+                        <li>Nombre d'interventions " curative(s) "= {{ ti1 }} soit {{ tip1|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre d'interventions " préventive(s) "= {{ ti2 }} soit {{ tip2|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre d'interventions en " Amélioration continue "= {{ ti3 }}  soit {{ tip3|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre d'interventions " Annuelle(s) "= {{ ti4 }} soit {{ tip4|format_number({rounding_mode: 'floor'}) }} %</li>
+                    </ul>
+                    <h4>Les types de panne :</h4>
+                    <ul>
+                        <li>Nombre de pannes " électrique(s) " = {{ tp1 }} soit {{ tpp1|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre de pannes " électromécanique(s) " = {{ tp2 }} soit {{ tpp2|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre de pannes " mécanique(s) " = {{ tp3 }} soit {{ tpp3|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre de pannes " hydraulique(s) " = {{ tp4 }} soit {{ tpp4|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre de pannes " pneumatique(s) " = {{ tp5 }} soit {{ tpp5|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre de pannes en " automatisme " = {{ tp6 }}  soit {{ tpp6|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre de pannes " électronique(s) " = {{ tp7 }} soit {{ tpp7|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre de pannes " sécurité(s) " = {{ tp8 }} soit {{ tpp8|format_number({rounding_mode: 'floor'}) }} %</li>
+                        <li>Nombre de pannes " Autres " = {{ tp9 }}  soit {{ tpp9|format_number({rounding_mode: 'floor'}) }} %</li>
+                    </ul>
+                </div>
                 <div class="text-center my-5"> <a href="{{path('machine') }}"><button type="button" class="btn btn-primary text-white">Parc Machines</button></a></div>
             </div>
         </div>
     </div>
+    
+    
   
 {% endblock %}
