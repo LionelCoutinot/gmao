@@ -112,6 +112,91 @@ a
 
 .filter2{
     display:block;
-    position:sticky;
-   
+    position:sticky;   
 }
+
+a:link{
+    text-decoration:none;
+    font-weight : bold;
+   		
+}
+
+/*trait vertical  */
+.vertical { 
+    border-left: 2px solid gold; 
+    height: 200px; 
+    display: inline-block;
+    } 
+
+
+
+/* Page Histogramme */
+
+canvas  {
+    background-color: white;			
+    border : 2px solid gold;
+    border-radius:15px;
+    padding-left:20px;
+  }
+
+  #myCanvas{
+    width:100%;
+  }
+        
+#titre {
+    margin : auto;
+    width : 720px;
+    border-radius : 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    background-color: lemonchiffon;
+    padding : 8px;
+    text-align : center;
+}
+		    
+.fieldset {
+    border: 2px solid gold;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    background-color :#FFFFAA;
+    padding: 20px;
+    color:brown
+}
+		
+
+
+#initiatot{
+    cursor:pointer; 
+    background-color:red;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+}
+
+/* Fin page Histogramme */
+
+/* Page de garde */
+#titre2
+{
+    display:block;
+    position:absolute;
+    top:240px;
+}
+
+.lien
+{
+	display: block-inline;       
+	width : 350px;	     
+      border: 2px solid brown;	
+      border-radius: 10px;
+	background-color:#FFFFAA;    	
+     font-weight:bold;
+    text-align: center;
+	color:brown;
+	text-decoration : none;
+	font-size:80pt;
+     padding: 3px 8px 3px 8px;	
+	 }
+
+

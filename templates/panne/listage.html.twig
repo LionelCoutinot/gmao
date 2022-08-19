@@ -2,11 +2,11 @@
 {% block title %}Listage des interventions{% endblock %}
 {% block body %}
    <div class="text-end me-2 mt-2">
-      <input type="button" class="btn btn-warning" value="Imprimer" onclick="window.print();" />
+      <input type="button" class="btn btn-warning mb-2" value="Imprimer" onclick="window.print();" />
    </div>
    <div class="container">   
       <div class="row">
-         <div class="col-12 my-5 border border-warning   rounded background-bold fsize  px-5">
+         <div class="col-12 mb-5 border border-warning   rounded background-bold fsize  px-5">
             <h1 class="text-center brown uppercaseb py-3  my-5">Listage des interventions</h1>
             {% if pannes is empty %}
                <span>Aucune intervention sur cette machine</span>

@@ -4,7 +4,7 @@
 {% block body %}
 
    <div class="text-end  me-2 mt-2">
-        <input type="button" class="btn btn-warning" value="Imprimer" onclick="window.print();" />
+        <input type="button" class="btn btn-warning mb-2" value="Imprimer" onclick="window.print();" />
    </div>
    <div class="container-fluid fsize">   
         <div class="row">
@@ -166,8 +166,9 @@
                         <li>Nombre de pannes " électronique(s) " = {{ tp7 }} soit {{ tpp7|format_number({rounding_mode: 'floor'}) }} %</li>
                         <li>Nombre de pannes " sécurité(s) " = {{ tp8 }} soit {{ tpp8|format_number({rounding_mode: 'floor'}) }} %</li>
                         <li>Nombre de pannes " Autres " = {{ tp9 }}  soit {{ tpp9|format_number({rounding_mode: 'floor'}) }} %</li>
-                    </ul>
+                    </ul>                    
                 </div>
+                <h4><a href="{{ path('courbe') }}"   target="_blank"><span class="histo">Histogramme et courbe ABC</h4> </a></h4> 
                 <div class="text-center my-5"> <a href="{{path('machine') }}"><button type="button" class="btn btn-primary text-white">Parc Machines</button></a></div>
             </div>
         </div>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block stylesheets %}
+               <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+        {% endblock %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <title>Histogramme et Courbe ABC</title>
+    </head>
+    <body onload="draw()"  onKeyPress="BloqSubmit()">
+        <nav class="navbar navbar-expand-lg navbar-dark back-nav bold">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8"> 
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        </div>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <span class="navbar-brand brown" id="titlenav">GMAO</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+            </div> 
+        </nav>
+        <div class="text-end me-2 mt-2">
+            <input type="button" class="btn btn-warning mb-2" value="Imprimer" onclick="window.print();" />
+        </div>
+        <div class="container">
+        <div class="fieldset mb-5">
+            <div class="row">
+                <div class="col-12  text-center mt-4">
+                     <h1 class="text-center brown uppercaseb py-3">Histogramme et courbe ABC</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12   mt-4"> 
+                     <div class="text-center  mt-4">
+                        <canvas id="myCanvas" width="1000" height="620">
+                            Message pour les navigateurs ne supportant pas encore canvas.
+			            </canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <legend>Abscisses</legend>    
+                    <div class="row pb-5">                
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs1">1</label>
+                            </div>
+                            <input type="text" class="form-control"  name="abs1" id="abs1">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs2">2</label>
+                            </div>
+                            <input type="text" class="form-control"  name="abs2" id="abs2">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs3">3</label>
+                            </div>
+                            <input type="text" class="form-control"   name="abs3" id="abs3">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs4">4</label>
+                            </div>
+                                <input type="text" class="form-control"   name="abs4" id="abs4">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs5">5</label>
+                            </div>
+                            <input type="text" class="form-control"   name="abs5" id="abs5">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs6">6</label>
+                            </div>
+                            <input type="text" class="form-control"  name="abs6" id="abs6">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs7">7</label>
+                            </div>
+                            <input type="text" class="form-control"   name="abs7" id="abs7">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs8">8</label>
+                            </div>
+                            <input type="text" class="form-control"   name="abs8" id="abs8">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs9">9</label>
+                            </div>                            
+                             <input type="text" class="form-control" size="5" min="0" max="100"  name="abs9" id="abs9">
+                        </div>
+                        <div class="col-12 col-md-2 text-center">
+                            <div>
+                                &nbsp;<label for="abs10">10</label>
+                            </div>
+                            <input type="text" class="form-control" size="5" min="0" max="100"  name="abs10" id="abs10">
+                        </div>
+                        <div class="col-12 col-md-2 text-center d-grid gap-2 d-md-block">
+                            <button name="legabs" class="btn btn-primary mt-4" id="legabs">Abscisses</button>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12  mt-5">
+                    <div class="row">
+                        <legend>Tracé</legend>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                    &nbsp;<label for="pt1">1</label>
+                            </div>
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt1" id="pt1">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt2">2</label> 
+                            </div>                            
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt2" id="pt2">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt3">3</label>
+                             </div>                               
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt3" id="pt3">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt4">4</label>
+                            </div>
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt4" id="pt4">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt5">5</label>
+                            </div>
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt5" id="pt5">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt6">6</label>
+                            </div>
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt6" id="pt6">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt7">7</label>
+                            </div>
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt7" id="pt7">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt8">8</label>
+                            </div>
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt8" id="pt8">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt9">9</label>
+                            </div>
+                            <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt9" id="pt9">
+                        </div>
+                        <div class="col-12 col-md-1 text-center">
+                            <div>
+                                &nbsp;<label for="pt10">10</label>
+                            </div>
+                             <input type="number" class="form-control" size="3" min="0" max="100" style="text-align:right" name="pt10" id="pt10">
+                        </div>
+                        <div class="col-12 col-md-1 text-center mb-5 d-grid gap-2 d-md-block">
+                            <button class="btn btn-primary  mt-4" name="ptenv" id="ptenv">Tracer</button>				
+						</div>
+                    </div> 
+                    <div class="d-flex justify-content-center"> 
+                      <hr width="50%"/> 
+                    </div> 
+                    <div class="row">
+                        <legend class="pt-1">Courbe ABC</legend>
+                        <div class="col-12 col-md-2  mt-3 pb-5" id="tababc">
+                            <div class="d-grid gap-2 d-md-block pt-4">	
+				                <button name="boutabc" class="btn btn-primary" id="boutabc">Courbe ABC</button>				                   
+			                <div>
+		                </div>
+				    </div>
+                   
+                </div>
+           </div>
+            <hr class="my-4"> 
+            <div class="row">
+                <div class="col-12  mt-5">
+                    <div class="row pb-5">
+                    <legend>Texte</legend>
+                        <div class="col-12 col-md-2 text-center pt-2">                            
+                               <div>                             
+                                <label for="unitabs">Unité abscisse</label>
+                            </div>
+                            <input type="text" class="form-control" size="14"   name="unitabs" id="unitabs"> 
+                        </div>
+                        <div class="col-12 col-md-2 text-center pt-2">
+                            <div>
+                                <label for="unitord">Unité ordonnée</label>
+                            </div>
+                                <input type="text" class="form-control" size="14"  name="unitord" id="unitord"> 
+                        </div>
+                        <div class="col-12 col-md-4 text-center pt-2">
+                            <div>
+                                <label for="intitule">Intitulé</label>
+                            </div>
+                                <input type="text" class="form-control" size="40"  name="intitule" id="intitule"> 
+                        </div>
+                        <div class="col-12 col-md-2 text-center   pt-2">
+                            <div class="d-grid gap-2 d-md-block pt-4">
+                                <button name="unite" class="btn btn-primary" id="unite">Texte</button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2 text-center  pt-2 ">
+                            <div class="d-grid gap-2 d-md-block pt-4">
+                                <button name="initunit"  class="btn btn-primary"  id="initunit">Init. texte</button>
+                            </div>
+                        </div>
+                    </div> 
+                </div>   
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12   mt-5">
+                    <div class="row pb-5">
+                        <div class="col-12 col-md-4 me-5 mb-5">	
+                            <legend>Couleur des tracés</legend>
+                            <select class="form-select"  name="list" id="list"> 
+                                <option>Noir</option>
+                                <option>Bleu</option>
+                                <option>Orange</option>
+                                <option>Rouge</option>
+                                <option>Vert</option>
+                            </select>
+						</div>                       
+                        <div class="col-12 col-md-4 vertical"> 
+		                    <div id="tabinit" class="ms-5">
+                                <legend>Init. totale de la page</legend>
+					            <div id="initiat">  
+                                    <div class="d-grid gap-2 d-md-block">             
+					                    <button class="btn btinit" name="initiatot" id="initiatot">Init. page</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		    </div>
+        </div>
+        </div>
+       
+      
+        {%  block body  %}{%  endblock %}
+        {%  block js  %}{%  endblock %}
+        <script src="{{ asset('assets/js/script.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+
+</html>
+
+
+
+
