@@ -1,4 +1,4 @@
-/*canvas responive 
+/*canvas responsive 
 function resize(){    
     $("#myCanvas").outerHeight($(window).height()-$("#myCanvas").offset().top- Math.abs($("#myCanvas").outerHeight(true) - $("#myCanvas").outerHeight()));
   }
@@ -10,7 +10,7 @@ function resize(){
   });
   */
 
-  const { ctx, el } = VBCanvas.createCanvas({
+  const { ctx, el } = VBCanvas.createCanvas({ /* création de l'élément " Canvas " pour dessiner des éléments graphiques */ 
     // viewBox (x, y, width, height)
     viewBox: [0, 0, canvasWidth, canvasHeight],
     // where to mount the <canvas> element
@@ -18,7 +18,7 @@ function resize(){
   });
 
  
- function draw() {
+ function draw() { 
     var canvas = document.getElementById('myCanvas');       
     var context = canvas.getContext('2d'); 
     var cpt=0;  
@@ -43,7 +43,7 @@ function resize(){
     initiatot.addEventListener("click", function()  {//bouton initialisation totale
         initialisation();
     });
-    for (y1=50; y1<=500; y1+=50) {
+    for (y1=50; y1<=500; y1+=50) { /* échelle des ordonnées*/
         context.beginPath();
         context.font = '9pt calibri normal';
         context.fillStyle = "black";
@@ -55,7 +55,7 @@ function resize(){
         context.stroke();
         context.closePath();
     }
-    context.beginPath(); 
+    context.beginPath();
     context.moveTo(30,(570-500));
     context.lineTo(30,40);
     context.lineTo(25,50);
@@ -74,7 +74,7 @@ function resize(){
     context.fillText(90, 5, (570-450));
     context.fillText(100, 5, (570-500));
     for (x1=80; x1<820; x1+=80) 	{
-        context.beginPath(); 
+        context.beginPath(); /* échelle des abscisses*/
         context.moveTo(30,570);
         context.lineTo((30+x1),570);
         context.moveTo((30+x1),575);
@@ -99,7 +99,7 @@ function resize(){
   
     
 
-    function legendabs()  {
+    function legendabs()  { /*légende des abscisses */
         var abs1 = document.getElementById("abs1").value;
         var abs2= document.getElementById("abs2").value;
         var abs3 = document.getElementById("abs3").value;
@@ -139,7 +139,7 @@ function resize(){
     }
 
 
-    function traceHist() {
+    function traceHist() { /* Tracé de l'histogramme*/
         var  pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10;
         var pt1b = document.getElementById("pt1").value;
         var pt1b = document.getElementById("pt1").value;
@@ -196,7 +196,7 @@ function resize(){
         }
     }
 
-    function courbABC() {
+    function courbABC() { /* Tracé de la courbe ABC*/
         
         var pt1b = document.getElementById("pt1").value;
         var pt1b = document.getElementById("pt1").value;

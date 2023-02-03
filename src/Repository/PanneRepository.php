@@ -46,7 +46,7 @@ class PanneRepository extends ServiceEntityRepository
     }
 
     /**
-     * Récupère les produits en lien avec une recherche
+     * Query Builder : récupère les produits en lien avec une recherche
      * @return Panne []
      */
     public function findSearch(SearchData $search): array

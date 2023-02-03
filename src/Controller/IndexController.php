@@ -12,7 +12,7 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index()
+    public function index() /* Accès à la page d'accueil */
     {
         return $this->render('index/index.html.twig');
     }

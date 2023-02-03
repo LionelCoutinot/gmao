@@ -23,7 +23,7 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig');
+        return $this->render('admin/index.html.twig'); // Chemin vers la page personnalisée pour la page d'accueil de " l'admin "
     }
 
     public function configureDashboard(): Dashboard
@@ -32,7 +32,7 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Gmao');
     }
 
-    public function configureMenuItems(): iterable
+    public function configureMenuItems(): iterable  // Appel des différents menus disponibles de la page  de  " l'administration "
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);

@@ -18,7 +18,7 @@ class PanneCrudController extends AbstractCrudController
     }
 
    
-    public function configureFields(string $pageName): iterable
+    public function configureFields(string $pageName): iterable  /* Configuration des champs de l'entité " Panne " au niveau de l'administration */      
     {
         return [
             AssociationField::new('machine'),

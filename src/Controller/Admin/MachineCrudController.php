@@ -17,7 +17,7 @@ class MachineCrudController extends AbstractCrudController
     }
 
     
-    public function configureFields(string $pageName): iterable
+    public function configureFields(string $pageName): iterable   /* Configuration des champs de l'entité " Machine " au niveau de l'administration */      
     {
         return [            
             TextField::new('nom'),

@@ -15,10 +15,10 @@ class CriticiteCrudController extends AbstractCrudController
     }
 
     
-    public function configureFields(string $pageName): iterable
+    public function configureFields(string $pageName): iterable    /* Configuration des champs de l'entité " Criticite " au niveau de l'administration */      
     {
         return [
-            TextField::new('criticite'),           
+            TextField::new('criticite'),    
         ];
     }
     

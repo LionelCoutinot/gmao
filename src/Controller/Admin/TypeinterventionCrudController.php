@@ -14,7 +14,7 @@ class TypeinterventionCrudController extends AbstractCrudController
     }
 
     
-    public function configureFields(string $pageName): iterable
+    public function configureFields(string $pageName): iterable   /* Configuration des champs de l'entité " Typeintervention " au niveau de l'administration */      
     {
         return [
            

@@ -12,7 +12,7 @@ class CourbeController extends AbstractController
     /**
      * @Route("/courbe", name="courbe")
      */
-    public function courbe()
+    public function courbe()  /* Cette fonction appelle le template de tracé de l'histogramme réalisé à partir d'un code javascript et html/twig */
     {
         return $this->render('courbe/index.html.twig');
     }

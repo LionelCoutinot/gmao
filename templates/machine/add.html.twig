@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {# Template du formulaire d'ajout d'une nouvelle machine #}
 
 {% block title %}Ajouter une nouvelle machine{% endblock %}
 {% block body %}
@@ -19,7 +19,7 @@
                     <div class="brown mb-4"><strong> {{ form_row(form.type) }}</strong></div>
                     <div class="brown mb-4"><strong> {{ form_row(form.miseservice, { 'label': 'Date de mise en service' }) }}</strong></div>
                     <div class="brown mb-4"><strong> {{ form_row(form.caracteristique, { 'label': 'Caractéristiques' }) }}</strong></div>
-                    <div class="my-4"> {{ form_row(form.submit, { 'label': 'Enregistrer Machine', 'attr': {'class':'bg-success text-white'} } ) }}</div>
+                    <div class="my-4"> {{ form_widget(form.submit, { 'label': 'Enregistrer Machine', 'attr': {'class':'bg-success text-white'} } ) }}</div>
                 {{ form_end(form) }} 
 			    <div class="text-center my-5"> <a href="{{ path('machine') }}"><button type="button" class="btn btn-primary text-white">Retour Parc machines</button></a></div>
 		    </div>

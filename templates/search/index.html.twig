@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{# Template de visualisation des interventions de maintenance avec ou sans filtre #}
 {% block title %}Filtrage des interventions{% endblock %}
 {% block body %}
 
@@ -10,7 +10,7 @@
         <div class="row">
         
             <div class="col-md-3 mt-5  fsize me-5">
-                 {%  include 'search/_filter.html.twig' with { form:form } only %}
+                 {%  include 'search/_filter.html.twig'  %}
             </div>
         
             <div class="col-md-8 my-5 border border-warning  rounded background-bold me-5">

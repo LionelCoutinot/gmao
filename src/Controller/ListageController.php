@@ -30,9 +30,9 @@ class ListageController extends AbstractController
     /**
      * @Route("/listage", name="listage")
      */
-    public function index(ManagerRegistry $doctrine ): Response
+    public function index(ManagerRegistry $doctrine ): Response /* listing de toutes les pannes  */
     {		
-         $pannes=$doctrine->getRepository(Panne::class)->findAll(); 
+         $pannes=$doctrine->getRepository(Panne::class)->findAll();  /* Récupération de toutes les pannes au niveau de la base de données et envoi vers le template concerné */
          return $this->render('panne/listage.html.twig', [
             'controller_name' => 'ListageController',
             'pannes'=> $pannes,            

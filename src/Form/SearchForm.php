@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class SearchForm extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options) /* Définition des divers types de champs pour le formulaire de commande et des paramètres qui leur sont assignés si besoin */
     {
         $builder ->add('mac', TextType::class, [
             'label' => false,
@@ -55,7 +55,7 @@ class SearchForm extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver) /* Spécification de l'emploi de la méthode " GET " au niveau du filtre, pour pouvoir passer les paramètres dans l'URL  */
     {
         $resolver->setDefaults([
             'data_class' => SearchData::class,
@@ -64,7 +64,7 @@ class SearchForm extends AbstractType
         ]);
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix() /* Fonction permettant de retirer le préfixe afin d'avoir des paramètres les plus simple possible*/
     {
         return '';
     }

@@ -17,10 +17,6 @@ use App\Repository\CriticiteRepository;
 
 use App\Form\PanneType;
 
-use App\Controller\PanneController;
-use App\Controller\MachineController;
-
-
 use Doctrine\ORM\PersistentCollection;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,24 +34,24 @@ class PanneController extends AbstractController
     /**
      * @Route("/panne/new", name="panne_add")
      */
-    public function add(ManagerRegistry $doctrine, Request $request): Response
+    public function add(ManagerRegistry $doctrine, Request $request): Response /* Ajout au niveau de la BDD d'une nouvelle panne*/
     {
 		$newPanne= new Panne;
-		$form = $this->createForm(PanneType::class, $newPanne);
+		$form = $this->createForm(PanneType::class, $newPanne); /* Création du formulaire  */
 		$form->handleRequest($request);
-		if ($form->isSubmitted() && $form->isValid()) {
+		if ($form->isSubmitted() && $form->isValid()) { /* Vérification que le formulaire est valide et soumis */
 		    /* dump($request);*/
             $newPanne = $form->getData();           
-			$em=$doctrine->getManager();
-			$em->persist($newPanne);
-			$em->flush();            
-            $this->addFlash(
+			$em=$doctrine->getManager();  /* Récupération de l'entity manager   */  
+			$em->persist($newPanne);  /* Envoi de l'entité à l'entity manager  */ 
+			$em->flush();      /* exécution de la requête  */      
+            $this->addFlash( /* Notice de réussite*/
                 'notice',
                 'Nouvelle intervention ajoutée à la liste !'
         );
 	    return $this->redirectToRoute('panne_add');
         } 
-		return $this->render('panne/add.html.twig', [          
+		return $this->render('panne/add.html.twig', [     /* Envoi des données au fichier  template  Twig concerné */        
 		   'form' => $form->createView(),
            'newPanne' => $newPanne,
         ]);
@@ -66,7 +62,7 @@ class PanneController extends AbstractController
      /**
     * @Route("/panne/{id}", name="panne")
     */
-   public function single(ManagerRegistry $doctrine, $id): Response
+   public function single(ManagerRegistry $doctrine, $id): Response /* Fonction permettant de récupérer en bDD les pannes en fonction de l'" id " de la machine */
    {
        $machine=$doctrine->getRepository(Machine::class)->find($id);
        $panne=$machine->getPannes();

@@ -17,13 +17,13 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response /* Fonction permettant à un nouvel utilisateur de s'enregistrer à partir d'un formulaire  */
     {
         $user = new Utilisateur();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user); /* Création du formulaire */
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) { /* Vérification que le formulaire est valide et  soumis */
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
@@ -32,17 +32,17 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $entityManager->persist($user);  /* Envoi de l'entité à l'entity manager  */ 
+            $entityManager->flush(); /* Exécution de la requête */
             // do anything else you need here, like send an email
-            $this->addFlash(
+            $this->addFlash( /*Notice de réussite */
                 'notice',
                 'Nouvel utilisateur enregistré !'
         );
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_register'); /* Redirection. Ici, on reste sur la même page une fois la fonction exécutée */
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('registration/register.html.twig', [   /* Envoi des données au fichier  template  Twig concerné */
             'registrationForm' => $form->createView(),
         ]);
     }
