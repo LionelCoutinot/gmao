@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class SearchForm extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options) /* Définition des divers types de champs pour le formulaire de commande et des paramètres qui leur sont assignés si besoin */
+    public function buildForm(FormBuilderInterface $builder, array $options) /* Définition des divers types de champs pour le formulaire de recherche et des paramètres qui leur sont assignés si besoin */
     {
         $builder ->add('mac', TextType::class, [
             'label' => false,
